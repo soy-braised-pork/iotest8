@@ -45,6 +45,18 @@ public class OptionalDemo {
         //lambda表达式返回值会包装为Optional实例
         Optional<String> upperName=name.map((value)->value.toUpperCase());
         System.out.println(upperName.orElse("No value found"));
-
+//flatmap与map（Function）非常相似，区别在于lambda表达式的返回值
+//map方法的lambda表达式返回值可以是任何类型，但是返回值会包装成Optional实例
+//但是flatmap方法的lambda返回值总是Optional类型
+        upperName=name.flatMap((value)->Optional.of(value.toUpperCase()));
+        System.out.println(upperName.orElse("No value found"));
+//filter方法检查Optional值是否满足给定条件
+//如果满足返回Optional实例值，否则返回空Optional
+        Optional<String> longName=name.filter((value)->value.length()>6);
+        System.out.println(longName.orElse("The name is less than 6 characters"));
+//另一个示例，Optional值不满足给定条件
+        Optional<String> anotherName=Optional.of("Sana");
+        Optional<String> shortName=anotherName.filter((value)->value.length()>6);
+        System.out.println(shortName.orElse("The name is less than 6 character"));
     }
 }
