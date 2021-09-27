@@ -34,6 +34,19 @@ public class StreamTest {
         numsWithoutNull.stream().forEach((e)-> System.out.println(e));
 
         List<Integer> together= Stream.of(asList(1,2),asList(3,4)).flatMap(numbers->numbers.stream()).collect(toList());
+        together.stream().forEach((e)->System.out.println(e));
 
+        List<Integer> ints=Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+        System.out.println("ints sum is:"+ints.stream().reduce((sum,item)->sum+item).get());
+
+        List<Integer> ints1=Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+        System.out.println("ints1 sum is:"+ints1.stream().reduce(10,(sum,item)->sum+item));
+
+        List<Integer> ints2=Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+        System.out.println("ints2 sum is:"+ints2.stream().count());
+
+        List<Integer> ints3=Arrays.asList(1,2,3,4,5,6,7,8,9,1000000);
+        System.out.println(ints3.stream().allMatch(item->item<100));
+        ints3.stream().max((o1, o2) -> o1.compareTo(o2)).ifPresent(System.out::println);
     }
 }
