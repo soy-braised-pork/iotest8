@@ -7,7 +7,6 @@ package org.language.iii;
 public class Girl {
     private int age;
 
-    int sno;
 
     public int getAge() {
         if (age > 30) {
@@ -19,5 +18,9 @@ public class Girl {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public void play(Animal an){
+        an.shout();
     }
 }

@@ -23,9 +23,14 @@ public class Student extends Person {
         System.out.println(/*"student ------  sleep"*/);
     }
 
+    public String toString (){
+        return "Student ----> eat" + Sid + id + age + name + super.name;
+    }
+
     public static void main(String[] args) {
         Student student = new Student();
         student.eat();
+//        System.out.println(student.toString());
 //        super.sleep();
     }
 }
